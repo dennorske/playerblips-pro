@@ -4,9 +4,7 @@ Playerblips resource for GTA Network servers that provides good-looking blips on
 
 This will provide a numbered blips if there are multiple players in a vehicle, as well as special blip sprites for special vehicles like tanks and jets.
 
-![](Screenshot1.jpg)
-
-![](Screenshot2.jpg)
+![](Screenshot.jpg)
 
 If you have [`colorednames`](https://github.com/MissyMelissa/colorednames) installed, the player blips will be colored like in the screenshots above.
 
