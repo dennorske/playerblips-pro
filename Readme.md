@@ -2,7 +2,7 @@
 
 Playerblips resource for GTA Network servers that provides good-looking blips on the minimap for players on GTA Network servers.
 
-This will provide a numbered blips if there are multiple players in a vehicle, as well as special blip sprites for special vehicles like tanks and jets.
+This will provide a numbered blip if there are multiple players in a vehicle, as well as special blip sprites for special vehicles like tanks and jets.
 
 ![](Screenshot.jpg)
 
