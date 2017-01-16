@@ -146,6 +146,10 @@ namespace playerblips_pro
 
 		private void UpdateBlipForVehicle(NetHandle vehicle)
 		{
+			if (vehicle.IsNull) {
+				return;
+			}
+
 			var clients = API.getVehicleOccupants(vehicle);
 
 			// WORKAROUND: Disconnected players are still returned by getVehicleOccupants.
@@ -153,7 +157,7 @@ namespace playerblips_pro
 			int numClients = 0;
 			var allPlayers = API.getAllPlayers();
 			foreach (var client in clients) {
-				if (allPlayers.Find((p) => p.handle.Value == client.handle.Value) != null) {
+				if (allPlayers.Find(p => p.handle.Value == client.handle.Value) != null) {
 					numClients++;
 				}
 			}
@@ -181,6 +185,10 @@ namespace playerblips_pro
 			}
 
 			var driverBlip = GetBlipForPlayer(driver);
+			if (driverBlip == null) {
+				// This maybe happens rarely?
+				return;
+			}
 
 			// Show number on blip for driver
 			if (numClients > 1) {
