@@ -11,10 +11,14 @@ function updatePlayerBlip(blip: LocalHandle, player: LocalHandle) {
 	}
 
 	var playerPosition = API.getEntityPosition(player);
-	var playerRotation = API.getEntityRotation(player);
 
 	API.setBlipPosition(blip, playerPosition);
-	API.callNative("SET_BLIP_ROTATION", blip, Math.round(playerRotation.Z));
+
+	var playerVehicle = API.getPlayerVehicle(player);
+	if (!playerVehicle.IsNull) {
+		var vehicleRotation = API.getEntityRotation(playerVehicle);
+		API.callNative("SET_BLIP_ROTATION", blip, Math.round(vehicleRotation.Z));
+	}
 }
 
 API.onUpdate.connect(function () {
