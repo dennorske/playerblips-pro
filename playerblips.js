@@ -1,10 +1,9 @@
 "use strict";
 /// <reference path="types-gtanetwork/index.d.ts" />
-var g_hashRhino = API.getHashKey("rhino");
-var g_hashInsurgent = API.getHashKey("insurgent");
-var g_hashTechnical = API.getHashKey("technical");
-var g_hashHydra = API.getHashKey("hydra");
-var g_hashLazer = API.getHashKey("lazer");
+var g_tanks = [API.getHashKey("rhino")];
+var g_technical = [API.getHashKey("insurgent"), API.getHashKey("technical")];
+var g_jets = [API.getHashKey("hydra"), API.getHashKey("lazer")];
+var g_helicopters = [API.getHashKey("annihilator"), API.getHashKey("buzzard"), API.getHashKey("buzzard2"), API.getHashKey("cargobob"), API.getHashKey("cargobob2")];
 function updatePlayerBlip(blip, player) {
     if (blip == null || blip.IsNull) {
         return;
@@ -48,14 +47,17 @@ API.onUpdate.connect(function () {
     }
     else {
         var vehicleHash = API.getEntityModel(localVehicle);
-        if (vehicleHash == g_hashRhino) {
+        if (g_tanks.indexOf(vehicleHash) != -1) {
             newBlipSprite = 421;
         }
-        else if (vehicleHash == g_hashInsurgent || vehicleHash == g_hashTechnical) {
+        else if (g_technical.indexOf(vehicleHash) != -1) {
             newBlipSprite = 460;
         }
-        else if (vehicleHash == g_hashHydra || vehicleHash == g_hashLazer) {
+        else if (g_jets.indexOf(vehicleHash) != -1) {
             newBlipSprite = 16;
+        }
+        else if (g_helicopters.indexOf(vehicleHash) != -1) {
+            newBlipSprite = 422;
         }
         else {
             newBlipSprite = 1;
